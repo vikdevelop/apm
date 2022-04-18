@@ -13,7 +13,7 @@ optional arguments:
   -seeall           See all installed AppImages
   -search SEARCH    Search AppImages
 ```
-## Add new packages
+## Add new AppImages
 AppImages is located in the appimages.json file.
 To add an AppImage, type the following into the file:
 ```json
