@@ -20,4 +20,4 @@ To add an AppImage, type the following into the file:
   "appname": "url-to-download-appimg",
 ```
 ## Installation
-[Install package for Debian and Ubuntu →](https://github.com/vikdevelop/apm/blob/main/apm_1.0-1_amd64.deb?raw=true)
+[Install package for Debian and Ubuntu →](https://github.com/vikdevelop/apm/releases/download/1.0/apm_1.0-1_amd64.deb)
