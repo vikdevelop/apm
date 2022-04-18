@@ -6,6 +6,7 @@ apmcli = argparse.ArgumentParser()
 apmcli.add_argument("-install", help="Install AppImages", type=str)
 apmcli.add_argument("-remove", help="Uninstall AppImages", type=str)
 apmcli.add_argument("-seeall", help="See all installed AppImages", action="store_true")
+apmcli.add_argument("-search", help="Search AppImages", type=str)
 
 args = apmcli.parse_args()
 HOME = os.path.expanduser('~')
@@ -54,6 +55,10 @@ if args.remove in jsonObject:
         print('\033[1m' + 'Removing ' + args.remove + '.desktop from $HOME/.local/share/applications/ directory' + '\033[0m')
         os.remove('%s/.local/share/applications/' % HOME + args.remove + '.desktop')
         print('\033[1m' + 'Done!' + '\033[0m')
+
+if args.search in jsonObject:
+    print("Search results")
+    print('\033[1m' + args.search + '/appimages' + '\033[0m')
 
 if args.seeall:
     print("This is all AppImages installed on your computer:")
