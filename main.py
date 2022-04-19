@@ -1,6 +1,8 @@
+#!/usr/bin/python3
 import json
 import os
 import argparse
+from urllib.request import urlopen
 
 apmcli = argparse.ArgumentParser()
 apmcli.add_argument("-install", help="Install AppImages", type=str)
@@ -8,10 +10,12 @@ apmcli.add_argument("-remove", help="Uninstall AppImages", type=str)
 apmcli.add_argument("-seeall", help="See all installed AppImages", action="store_true")
 apmcli.add_argument("-search", help="Search AppImages", type=str)
 
+# appimages.json
+u = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
+jsonObject = json.load(u)
+
 args = apmcli.parse_args()
 HOME = os.path.expanduser('~')
-with open("appimages.json") as jsondata:
-    jsonObject = json.load(jsondata)
 
 if args.install in jsonObject:
     '\033[1m' + 'Installaion AppImage' + '\033[0m'
@@ -37,8 +41,8 @@ if args.install in jsonObject:
             f.write("Type=Application\n")
             f.write("Exec=$HOME/.AppImage/" + args.install + ".AppImage\n")
             f.write("Icon=AppImage\n")
-            f.write("Categories=Tools\n")
-            f.write("Comment=This is Appimage of" + args.install)
+            f.write("Categories=Tool\n")
+            f.write("Comment=This is Appimage of " + args.install)
         print('\033[1m' + 'Done!' + '\033[0m')
 
 if args.remove in jsonObject:
