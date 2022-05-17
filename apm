@@ -3,6 +3,7 @@ import json
 import os
 import argparse
 from urllib.request import urlopen
+from tabulate import tabulate
 
 apmcli = argparse.ArgumentParser()
 apmcli.add_argument("-install", help="Install AppImages", type=str)
@@ -19,9 +20,13 @@ HOME = os.path.expanduser('~')
 
 if args.install in jsonObject:
     '\033[1m' + 'Installaion AppImage' + '\033[0m'
-    print("Searching AppImage: " + args.install + " ... done.")
-    print("Name:        Source:\n")
-    print(args.install + "      %s" % jsonObject[args.install])
+    installdata = [
+    [args.install, "@latest", jsonObject[args.install]],
+    ]
+ 
+    head = ["Name", "Version", "Source"]
+    
+    print(tabulate(installdata, headers=head))
     dialog = input("Would you like to continue? [Y/n]: ")
     if dialog == 'n':
         print("Canceled.")
@@ -46,9 +51,21 @@ if args.install in jsonObject:
         print('\033[1m' + 'Done!' + '\033[0m')
 
 if args.remove in jsonObject:
+    if not os.path.exists("%s/.AppImage/" % HOME + args.remove + ".AppImage"):
+        print("Package " + args.remove + " is not installed. Try use 'apm -install " + args.remove + "' or type 'apm --help'")
+        exit()
+    else:
+        print("Checking package " + args.remove + " ...")
     print('\033[1m' + 'Uninstallation AppImage' + '\033[0m')
-    print("Name:        Path:\n")
-    print(args.remove + "       $HOME/.AppImage/" + args.remove + ".AppImage")
+    rmdata = [
+    [args.remove, "@latest", "$HOME/.AppImage/" + args.remove + ".AppImage"],
+    ]
+ 
+    # create header
+    head = ["Name", "Version", "Path"]
+     
+    # display table
+    print(tabulate(rmdata, headers=head))
     rm = input("Would you like to continue? [Y/n]: ")
     if rm == 'n':
         print("Canceled.")
@@ -62,7 +79,13 @@ if args.remove in jsonObject:
 
 if args.search in jsonObject:
     print("Search results")
-    print('\033[1m' + args.search + '/appimages' + '\033[0m')
+    searchdata = [args.search, "@latest", "@appimages.json"],
+ 
+    # create header
+    head = ["Name", "Version", "Repo file"]
+     
+    # display table
+    print(tabulate(searchdata, headers=head))
 
 if args.seeall:
     print("This is all AppImages installed on your computer:")
