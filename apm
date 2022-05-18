@@ -10,6 +10,7 @@ apmcli.add_argument("-install", help="Install AppImages", type=str)
 apmcli.add_argument("-remove", help="Uninstall AppImages", type=str)
 apmcli.add_argument("-seeall", help="See all installed AppImages", action="store_true")
 apmcli.add_argument("-search", help="Search AppImages", type=str)
+apmcli.add_argument("-run", help="Run AppImages", type=str)
 
 # appimages.json
 u = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
@@ -44,7 +45,7 @@ if args.install in jsonObject:
             f.write("[Desktop Entry]\n")
             f.write("Name=" + args.install + "\n")
             f.write("Type=Application\n")
-            f.write("Exec=$HOME/.AppImage/" + args.install + ".AppImage\n")
+            f.write("Exec=flatpak run com.github.vikdevelop.apm -run " + args.install)
             f.write("Icon=AppImage\n")
             f.write("Categories=Tool\n")
             f.write("Comment=This is Appimage of " + args.install)
@@ -56,13 +57,14 @@ if args.remove in jsonObject:
         exit()
     else:
         print("Checking package " + args.remove + " ...")
+    
     print('\033[1m' + 'Uninstallation AppImage' + '\033[0m')
     rmdata = [
-    [args.remove, "@latest", "$HOME/.AppImage/" + args.remove + ".AppImage"],
+    [args.remove, '[unknown]', "$HOME/.AppImage/" + args.remove + ".AppImage"],
     ]
  
     # create header
-    head = ["Name", "Version", "Path"]
+    head = ["Name", "Installation date", "Path"]
      
     # display table
     print(tabulate(rmdata, headers=head))
@@ -86,6 +88,10 @@ if args.search in jsonObject:
      
     # display table
     print(tabulate(searchdata, headers=head))
+
+if args.run:
+    print('\033[1m' + '$ ~/.AppImage/' + args.run + '.AppImage' + '\033[0m')
+    os.system("$HOME/.AppImage/" + args.run + ".AppImage")
 
 if args.seeall:
     print("This is all AppImages installed on your computer:")
