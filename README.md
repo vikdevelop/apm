@@ -19,5 +19,8 @@ To add an AppImage, type the following into the file:
 ```json
   "appname": "url-to-download-appimg",
 ```
-## Installation
-[Install package for Debian and Ubuntu →](https://github.com/vikdevelop/apm/releases/download/1.0/apm_1.1-1_amd64.deb)
+## Build
+For build this app, use `flatpak-builder`:
+```
+flatpak-builder build flatpak.yml --install --user
+```
