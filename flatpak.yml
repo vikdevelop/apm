@@ -19,5 +19,5 @@ modules:
       - install -D -t /app/bin apm
     sources:
       - type: archive
-        url: https://github.com/vikdevelop/apm/archive/refs/tags/1.1.2.tar.gz
-        sha256: a2a0762dbdbb97dd9397782b9c6c66f5b34e2d122d8bbaae340b4bb6edab1376
+        url: https://github.com/vikdevelop/apm/archive/refs/tags/1.1.2.1.tar.gz
+        sha256: 7e80ceabe9476a944a1a63287057260f137819d67f00f375794d31e3ad769c1f
