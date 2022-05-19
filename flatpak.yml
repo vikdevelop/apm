@@ -20,4 +20,4 @@ modules:
     sources:
       - type: archive
         url: https://github.com/vikdevelop/apm/archive/refs/tags/1.1.2.1.tar.gz
-        sha256: 7e80ceabe9476a944a1a63287057260f137819d67f00f375794d31e3ad769c1f
+        sha256: a0d82c7984e237c242a062ebc64e70271a3bda028d56f6f909e1ae4fb9455445
