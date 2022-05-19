@@ -45,7 +45,7 @@ if args.install in jsonObject:
             f.write("[Desktop Entry]\n")
             f.write("Name=" + args.install + "\n")
             f.write("Type=Application\n")
-            f.write("Exec=flatpak run com.github.vikdevelop.apm -run " + args.install)
+            f.write("Exec=$HOME/.AppImage/" + args.install + ".AppImage")
             f.write("Icon=AppImage\n")
             f.write("Categories=Tool\n")
             f.write("Comment=This is Appimage of " + args.install)
