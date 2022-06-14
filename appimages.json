@@ -53,5 +53,9 @@
     "fontforge": "https://github.com/fontforge/fontforge/releases/download/20220308/FontForge-2022-03-08-582bd41-x86_64.AppImage",
     "brave-browser-stable": "https://github.com/srevinsaju/Brave-AppImage/releases/download/stable/Brave-x86_64.AppImage",
     "sielo-legacy": "https://github.com/SieloBrowser/sielo-legacy/releases/download/v1.17.14/Sielo1.17.14.AppImage",
-    "wexond": "https://github.com/wexond/browser-base/releases/download/v5.2.0/Wexond-5.2.0.AppImage"
+    "wexond": "https://github.com/wexond/browser-base/releases/download/v5.2.0/Wexond-5.2.0.AppImage",
+    "firefox-esr": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-esr-next/firefox-esr-next-91.10.r20220523115307-x86_64.AppImage",
+    "firefox-dev": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-devedition/firefox-devedition-102.0.r20220612185901-x86_64.AppImage",
+    "firefox-beta": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-beta/firefox-beta-102.0.r20220612185901-x86_64.AppImage",
+    "firefox": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox/firefox-101.0.r20220608170832-x86_64.AppImage"
 }
