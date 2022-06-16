@@ -11,8 +11,8 @@ apmcli.add_argument("-remove", help="Uninstall AppImages", type=str)
 apmcli.add_argument("-seeall", help="See all installed AppImages", action="store_true")
 apmcli.add_argument("-search", help="Search AppImages", type=str)
 apmcli.add_argument("-run", help="Run AppImages", type=str)
+#apmcli.add_argument("-addrepo", help="Add new repository file writted in JSON", type=str)
 
-# appimages.json
 u = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
 jsonObject = json.load(u)
 
@@ -41,14 +41,15 @@ if args.install in jsonObject:
         os.system("mv *.AppImage $HOME/.AppImage/" + args.install + ".AppImage")
         os.system("chmod +x $HOME/.AppImage/" + args.install + ".AppImage")
         print('\033[1m' + 'Creating and moving ' + args.install + '.desktop to $HOME/.local/share/applications/' + '\033[0m')
-        with open('%s/.local/share/applications/' % HOME + args.install + '.desktop', 'w') as f:
-            f.write("[Desktop Entry]\n")
-            f.write("Name=" + args.install + "\n")
-            f.write("Type=Application\n")
-            f.write("Exec=$HOME/.AppImage/" + args.install + ".AppImage\n")
-            f.write("Icon=AppImage\n")
-            f.write("Categories=Tool\n")
-            f.write("Comment=This is Appimage of " + args.install)
+        with open('%s/.local/share/applications/' % HOME + args.install + '.desktop', 'w') as desktop:
+            desktop.write("[Desktop Entry]\n")
+            desktop.write("Type=Application\n")
+            desktop.write("Name=" + args.install + "\n")
+            desktop.write("Comment=AppImage of " + args.install + "\n")
+            desktop.write("Icon=AppImage\n")
+            desktop.write("Exec=~/.AppImage/" + args.install + ".AppImage\n")
+            desktop.write("Terminal=false\n")
+            desktop.write("Categories=System;System-Tools;")
         print('\033[1m' + 'Done!' + '\033[0m')
 
 if args.remove in jsonObject:
@@ -88,7 +89,7 @@ if args.search in jsonObject:
      
     # display table
     print(tabulate(searchdata, headers=head))
-
+    
 if args.run:
     print('\033[1m' + '$ ~/.AppImage/' + args.run + '.AppImage' + '\033[0m')
     os.system("$HOME/.AppImage/" + args.run + ".AppImage")
