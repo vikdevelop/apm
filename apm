@@ -62,7 +62,7 @@ if args.install in jsonObject:
         print('\033[92m' + done_text + '\033[0m')
 
 if args.remove in jsonObject:
-    if os.path.exists("%s/.AppImage/" % HOME + args.remove + ".AppImage"):
+    if not os.path.exists("%s/.AppImage/" % HOME + args.remove + ".AppImage"):
         print(package + args.remove + package_is_not_installed + args.remove + type_apm_help)
         exit()
     else:
