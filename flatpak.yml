@@ -15,6 +15,7 @@ modules:
         - --share=network
     build-commands:
       - pip3 install --prefix=/app tabulate
+      - cp -R translations /app/
       - chmod +x apm
       - install -D -t /app/bin apm
     sources:
