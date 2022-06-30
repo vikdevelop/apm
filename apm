@@ -1,4 +1,12 @@
 #!/usr/bin/python3
+import subprocess
+import time
+import progressbar
+if subprocess.getoutput("locale") == 'LANG=cs_CZ.UTF-8\nLC_CTYPE="cs_CZ.UTF-8"\nLC_NUMERIC="cs_CZ.UTF-8"\nLC_TIME="cs_CZ.UTF-8"\nLC_COLLATE="cs_CZ.UTF-8"\nLC_MONETARY="cs_CZ.UTF-8"\nLC_MESSAGES="cs_CZ.UTF-8"\nLC_PAPER="cs_CZ.UTF-8"\nLC_NAME="cs_CZ.UTF-8"\nLC_ADDRESS="cs_CZ.UTF-8"\nLC_TELEPHONE="cs_CZ.UTF-8"\nLC_MEASUREMENT="cs_CZ.UTF-8"\nLC_IDENTIFICATION="cs_CZ.UTF-8"\nLC_ALL=':
+    from translations.cs import *
+else:
+    from translations.en import *
+
 import json
 import os
 import argparse
@@ -6,11 +14,11 @@ from urllib.request import urlopen
 from tabulate import tabulate
 
 apmcli = argparse.ArgumentParser()
-apmcli.add_argument("-install", help="Install AppImages", type=str)
-apmcli.add_argument("-remove", help="Uninstall AppImages", type=str)
-apmcli.add_argument("-seeall", help="See all installed AppImages", action="store_true")
-apmcli.add_argument("-search", help="Search AppImages", type=str)
-apmcli.add_argument("-run", help="Run AppImages", type=str)
+apmcli.add_argument("-install", help=help_install_appimages, type=str)
+apmcli.add_argument("-remove", help=help_uninstall_appimages, type=str)
+apmcli.add_argument("-seeall", help=help_see_all_appimages, action="store_true")
+apmcli.add_argument("-search", help=help_search_appimages, type=str)
+apmcli.add_argument("-run", help=help_run_appimages, type=str)
 #apmcli.add_argument("-addrepo", help="Add new repository file writted in JSON", type=str)
 
 u = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
@@ -20,27 +28,27 @@ args = apmcli.parse_args()
 HOME = os.path.expanduser('~')
 
 if args.install in jsonObject:
-    '\033[1m' + 'Installaion AppImage' + '\033[0m'
+    print('\033[1m' + installation_appimage_title + '\033[0m')
     installdata = [
     [args.install, "@latest", jsonObject[args.install]],
     ]
  
-    head = ["Name", "Version", "Source"]
+    head = [name_tab, version_tab, source_tab]
     
     print(tabulate(installdata, headers=head))
-    dialog = input("Would you like to continue? [Y/n]: ")
+    dialog = input(continue_input + " [Y/n]: ")
     if dialog == 'n':
-        print("Canceled.")
+        print(canceled)
         exit()
     if dialog == 'y' or 'Y':
-        print('\033[1m' + 'Downloading sources' + '\033[0m')
-        os.system("wget -c %s" % jsonObject[args.install])
+        print(downloading_status + args.install)
+        os.system("wget -c %s > /dev/null 2>&1" % jsonObject[args.install])
         if not os.path.exists("%s/.AppImage" % HOME):
             os.mkdir("%s/.AppImage" % HOME)
-        print('\033[1m' + 'Installing ' + args.install + ' to $HOME/.AppImage' + '\033[0m')
+        print(installing_text + args.install + to_text + '$HOME/.AppImage')
         os.system("mv *.AppImage $HOME/.AppImage/" + args.install + ".AppImage")
         os.system("chmod +x $HOME/.AppImage/" + args.install + ".AppImage")
-        print('\033[1m' + 'Creating and moving ' + args.install + '.desktop to $HOME/.local/share/applications/' + '\033[0m')
+        print(creating_moving_text + args.install + to_text + ' $HOME/.local/share/applications/')
         with open('%s/.local/share/applications/' % HOME + args.install + '.desktop', 'w') as desktop:
             desktop.write("[Desktop Entry]\n")
             desktop.write("Type=Application\n")
@@ -50,42 +58,42 @@ if args.install in jsonObject:
             desktop.write("Exec=~/.AppImage/" + args.install + ".AppImage\n")
             desktop.write("Terminal=false\n")
             desktop.write("Categories=System;System-Tools;")
-        print('\033[1m' + 'Done!' + '\033[0m')
+        print('\033[92m' + done_text + '\033[0m')
 
 if args.remove in jsonObject:
-    if not os.path.exists("%s/.AppImage/" % HOME + args.remove + ".AppImage"):
-        print("Package " + args.remove + " is not installed. Try use 'apm -install " + args.remove + "' or type 'apm --help'")
+    if os.path.exists("%s/.AppImage/" % HOME + args.remove + ".AppImage"):
+        print(package + args.remove + package_is_not_installed + args.remove + type_apm_help)
         exit()
     else:
-        print("Checking package " + args.remove + " ...")
+        print(chacking_installation_status + args.remove + " ...")
     
-    print('\033[1m' + 'Uninstallation AppImage' + '\033[0m')
+    print('\033[1m' + uninstallation_appimage + '\033[0m')
     rmdata = [
     [args.remove, '[unknown]', "$HOME/.AppImage/" + args.remove + ".AppImage"],
     ]
  
     # create header
-    head = ["Name", "Installation date", "Path"]
+    head = [name_tab, date_tab, path_tab]
      
     # display table
     print(tabulate(rmdata, headers=head))
-    rm = input("Would you like to continue? [Y/n]: ")
+    rm = input(continue_input + " [Y/n]: ")
     if rm == 'n':
-        print("Canceled.")
+        print(canceled)
         exit()
     if rm == 'Y' or 'y':
-        print('\033[1m' + 'Removing ' + args.remove + ' from $HOME/.AppImage directory' + '\033[0m')
+        print('\033[1m' + removing_text + args.remove + from_dir_text + ' $HOME/.AppImage' + '\033[0m')
         os.remove(os.path.expanduser('~/.AppImage/') + args.remove + ".AppImage")
-        print('\033[1m' + 'Removing ' + args.remove + '.desktop from $HOME/.local/share/applications/ directory' + '\033[0m')
+        print('\033[1m' + removing_text + args.remove + desktop_file + from_dir_text + '$HOME/.local/share/applications/ directory' + '\033[0m')
         os.remove('%s/.local/share/applications/' % HOME + args.remove + '.desktop')
-        print('\033[1m' + 'Done!' + '\033[0m')
+        print('\033[92m' + done_text + '\033[0m')
 
 if args.search in jsonObject:
-    print("Search results")
+    print('\033[1m' + search_results + '\033[0m')
     searchdata = [args.search, "@latest", "@appimages.json"],
  
     # create header
-    head = ["Name", "Version", "Repo file"]
+    head = [name_tab, version_tab, repofile_tab]
      
     # display table
     print(tabulate(searchdata, headers=head))
@@ -95,5 +103,5 @@ if args.run:
     os.system("$HOME/.AppImage/" + args.run + ".AppImage")
 
 if args.seeall:
-    print("This is all AppImages installed on your computer:")
+    print(installed_appimages_text)
     os.system("ls $HOME/.AppImage")
