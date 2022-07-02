@@ -43,6 +43,7 @@ if args.install in jsonObject:
         exit()
     if dialog == 'y' or 'Y':
         print(downloading_status + args.install)
+        os.chdir('%s/.var/app/com.github.vikdevelop.apm/cache/tmp' % HOME)
         os.system("wget -c %s > /dev/null 2>&1" % jsonObject[args.install])
         if not os.path.exists("%s/.AppImage" % HOME):
             os.mkdir("%s/.AppImage" % HOME)
@@ -56,7 +57,7 @@ if args.install in jsonObject:
             desktop.write("Name=" + args.install + "\n")
             desktop.write("Comment=AppImage of " + args.install + "\n")
             desktop.write("Icon=AppImage\n")
-            desktop.write("Exec=~/.AppImage/" + args.install + ".AppImage\n")
+            desktop.write("Exec=%s/.AppImage/" % HOME + args.install + ".AppImage\n")
             desktop.write("Terminal=false\n")
             desktop.write("Categories=System;System-Tools;")
         print('\033[92m' + done_text + '\033[0m')
@@ -83,9 +84,9 @@ if args.remove in jsonObject:
         print(canceled)
         exit()
     if rm == 'Y' or 'y':
-        print('\033[1m' + removing_text + args.remove + from_dir_text + ' $HOME/.AppImage' + '\033[0m')
+        print(removing_text + args.remove + from_dir_text + ' $HOME/.AppImage')
         os.remove(os.path.expanduser('~/.AppImage/') + args.remove + ".AppImage")
-        print('\033[1m' + removing_text + args.remove + desktop_file + from_dir_text + '$HOME/.local/share/applications/ directory' + '\033[0m')
+        print(removing_text + args.remove + desktop_file + from_dir_text + '$HOME/.local/share/applications/ directory')
         os.remove('%s/.local/share/applications/' % HOME + args.remove + '.desktop')
         print('\033[92m' + done_text + '\033[0m')
 
