@@ -68,14 +68,14 @@ if args.remove in jsonObject:
         exit()
     else:
         print(chacking_installation_status + args.remove + " ...")
-    
+    size = os.path.getsize("%s/.AppImage/" % HOME + args.remove + ".AppImage")
     print('\033[1m' + uninstallation_appimage + '\033[0m')
     rmdata = [
-    [args.remove, '[unknown]', "$HOME/.AppImage/" + args.remove + ".AppImage"],
+    [args.remove, "%s KB" % size, "$HOME/.AppImage/" + args.remove + ".AppImage"],
     ]
  
     # create header
-    head = [name_tab, date_tab, path_tab]
+    head = [name_tab, size_tab, path_tab]
      
     # display table
     print(tabulate(rmdata, headers=head))
