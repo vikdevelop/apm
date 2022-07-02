@@ -32,7 +32,7 @@ chacking_installation_status = "Kontrola stavu instalace balíčku "
 uninstallation_appimage = "Odinstalace AppImage"
 date_tab = "Datum instalace"
 path_tab = "Umíštění"
-removing_text = "Odstraňování balíčku "
+removing_text = "Odstraňování "
 from_dir_text = " z "
 desktop_file = " spustitelného souboru "
 
