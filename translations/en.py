@@ -18,7 +18,7 @@ package = "AppImage "
 type_apm_help = "' or type apm --help"
 
 # Installation section
-appimage_installed_status = " is installed. So nothing to do."
+appimage_installed_status = " is installed. There's nothing to do."
 installation_appimage_title = "Installation AppImage"
 name_tab = "Name"
 version_tab = "Version"
