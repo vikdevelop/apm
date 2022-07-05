@@ -33,7 +33,7 @@ uninstallation_appimage = "Odinstalace AppImage"
 size_tab = "Velikost"
 path_tab = "Umíštění"
 removing_text = "Odstraňování"
-from_dir_text = "z "
+from_dir_text = " z "
 desktop_file = " spustitelného souboru "
 
 # Search section
