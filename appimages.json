@@ -59,5 +59,6 @@
     "firefox-dev": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-devedition/firefox-devedition-103.0.r20220630185738-x86_64.AppImage",
     "firefox-beta": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-beta/firefox-beta-103.0.r20220630185738-x86_64.AppImage",
     "firefox": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox/firefox-102.0.r20220623063721-x86_64.AppImage",
-    "element": "https://github.com/srevinsaju/element-appimage/releases/download/stable/Element-v1.10.11.glibc2.31.AppImage"
+    "element": "https://github.com/srevinsaju/element-appimage/releases/download/stable/Element-v1.10.11.glibc2.31.AppImage",
+    "photopea": "https://github.com/spooknik/Photopea-Appimage/releases/download/1.2.1/Photopea_1.2.1_x86_64.AppImage"
 }
