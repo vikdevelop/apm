@@ -32,8 +32,8 @@ chacking_installation_status = "Kontrola stavu instalace balíčku "
 uninstallation_appimage = "Odinstalace AppImage"
 size_tab = "Velikost"
 path_tab = "Umíštění"
-removing_text = "Odstraňování "
-from_dir_text = " z "
+removing_text = "Odstraňování"
+from_dir_text = "z "
 desktop_file = " spustitelného souboru "
 
 # Search section
