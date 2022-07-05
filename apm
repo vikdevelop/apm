@@ -29,38 +29,41 @@ args = apmcli.parse_args()
 HOME = os.path.expanduser('~')
 
 if args.install in jsonObject:
-    print('\033[1m' + installation_appimage_title + '\033[0m')
-    installdata = [
-    [args.install, "@latest", jsonObject[args.install]],
-    ]
- 
-    head = [name_tab, version_tab, source_tab]
-    
-    print(tabulate(installdata, headers=head))
-    dialog = input(continue_input + " [Y/n]: ")
-    if dialog == 'n':
-        print(canceled)
-        exit()
-    if dialog == 'y' or 'Y':
-        print(downloading_status + args.install)
-        os.chdir('%s/.var/app/com.github.vikdevelop.apm/cache/tmp' % HOME)
-        os.system("wget -c %s > /dev/null 2>&1" % jsonObject[args.install])
-        if not os.path.exists("%s/.AppImage" % HOME):
-            os.mkdir("%s/.AppImage" % HOME)
-        print(installing_text + args.install + to_text + '$HOME/.AppImage')
-        os.system("mv *.AppImage $HOME/.AppImage/" + args.install + ".AppImage")
-        os.system("chmod +x $HOME/.AppImage/" + args.install + ".AppImage")
-        print(creating_moving_text + args.install + to_text + ' $HOME/.local/share/applications/')
-        with open('%s/.local/share/applications/' % HOME + args.install + '.desktop', 'w') as desktop:
-            desktop.write("[Desktop Entry]\n")
-            desktop.write("Type=Application\n")
-            desktop.write("Name=" + args.install + "\n")
-            desktop.write("Comment=AppImage of " + args.install + "\n")
-            desktop.write("Icon=AppImage\n")
-            desktop.write("Exec=%s/.AppImage/" % HOME + args.install + ".AppImage\n")
-            desktop.write("Terminal=false\n")
-            desktop.write("Categories=System;System-Tools;")
-        print('\033[92m' + done_text + '\033[0m')
+    if os.path.exists("%s/.AppImage/" % HOME + args.install + ".AppImage"):
+        print(package + args.install + appimage_installed_status)
+    else:
+        print('\033[1m' + installation_appimage_title + '\033[0m')
+        installdata = [
+        [args.install, "@latest", jsonObject[args.install]],
+        ]
+
+        head = [name_tab, version_tab, source_tab]
+
+        print(tabulate(installdata, headers=head))
+        dialog = input(continue_input + " [Y/n]: ")
+        if dialog == 'n':
+            print(canceled)
+            exit()
+        if dialog == 'y' or 'Y':
+            print(downloading_status + args.install)
+            os.chdir('%s/.var/app/com.github.vikdevelop.apm/cache/tmp' % HOME)
+            os.system("wget -c %s > /dev/null 2>&1" % jsonObject[args.install])
+            if not os.path.exists("%s/.AppImage" % HOME):
+                os.mkdir("%s/.AppImage" % HOME)
+            print(installing_text + args.install + to_text + '$HOME/.AppImage')
+            os.system("mv *.AppImage $HOME/.AppImage/" + args.install + ".AppImage")
+            os.system("chmod +x $HOME/.AppImage/" + args.install + ".AppImage")
+            print(creating_moving_text + args.install + to_text + ' $HOME/.local/share/applications/')
+            with open('%s/.local/share/applications/' % HOME + args.install + '.desktop', 'w') as desktop:
+                desktop.write("[Desktop Entry]\n")
+                desktop.write("Type=Application\n")
+                desktop.write("Name=" + args.install + "\n")
+                desktop.write("Comment=AppImage of " + args.install + "\n")
+                desktop.write("Icon=AppImage\n")
+                desktop.write("Exec=%s/.AppImage/" % HOME + args.install + ".AppImage\n")
+                desktop.write("Terminal=false\n")
+                desktop.write("Categories=System;System-Tools;")
+            print('\033[92m' + done_text + '\033[0m')
 
 if args.remove in jsonObject:
     if not os.path.exists("%s/.AppImage/" % HOME + args.remove + ".AppImage"):
