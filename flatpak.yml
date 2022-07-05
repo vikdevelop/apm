@@ -19,6 +19,10 @@ modules:
       - chmod +x apm
       - install -D -t /app/bin apm
     sources:
-      - type: archive
-        url: https://github.com/vikdevelop/apm/archive/refs/tags/1.4.tar.gz
-        sha256: 791cf2c26eae0fc2ad991e964d575c5af03623b71bfe463acb9947f35f1b2033
+      #- type: archive
+        #url: https://github.com/vikdevelop/apm/archive/refs/tags/1.4.tar.gz
+        #sha256: 791cf2c26eae0fc2ad991e964d575c5af03623b71bfe463acb9947f35f1b2033
+       - type: git
+         url: https://github.com/vikdevelop/apm.git
+         tag: '1.4'
+         commit: b86e8da0863c44d11ae58a2ed7469b30da44a716
