@@ -14,10 +14,11 @@ continue_input = "Would you like to continue?"
 canceled = "Canceled."
 to_text = " to "
 done_text = "Done!"
-package = "Package "
+package = "AppImage "
 type_apm_help = "' or type apm --help"
 
 # Installation section
+appimage_installed_status = " is installed. So nothing to do."
 installation_appimage_title = "Installation AppImage"
 name_tab = "Name"
 version_tab = "Version"
