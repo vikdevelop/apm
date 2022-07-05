@@ -32,9 +32,9 @@ chacking_installation_status = "Checking installation status of AppImage "
 uninstallation_appimage = "Uninstallation AppImage"
 size_tab = "Size"
 path_tab = "Path"
-removing_text = "Uninstallation package "
+removing_text = "Removing package "
 from_dir_text = " from "
-desktop_file = " desktop file "
+desktop_file = "desktop file "
 
 # Search section
 search_results = "Search results"
