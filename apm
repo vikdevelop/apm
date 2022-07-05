@@ -20,7 +20,6 @@ apmcli.add_argument("-remove", help=help_uninstall_appimages, type=str)
 apmcli.add_argument("-seeall", help=help_see_all_appimages, action="store_true")
 apmcli.add_argument("-search", help=help_search_appimages, type=str)
 apmcli.add_argument("-run", help=help_run_appimages, type=str)
-#apmcli.add_argument("-addrepo", help="Add new repository file writted in JSON", type=str)
 
 u = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
 jsonObject = json.load(u)
@@ -87,9 +86,9 @@ if args.remove in jsonObject:
         print(canceled)
         exit()
     if rm == 'Y' or 'y':
-        print(removing_text + args.remove + from_dir_text + ' $HOME/.AppImage')
+        print(removing_text + " " + args.remove + from_dir_text + ' $HOME/.AppImage')
         os.remove(os.path.expanduser('~/.AppImage/') + args.remove + ".AppImage")
-        print(removing_text + desktop_file + from_dir_text + '$HOME/.local/share/applications/')
+        print(removing_text + desktop_file + args.remove + from_dir_text + '$HOME/.local/share/applications/')
         os.remove('%s/.local/share/applications/' % HOME + args.remove + '.desktop')
         print('\033[92m' + done_text + '\033[0m')
 
