@@ -86,7 +86,7 @@ if args.remove in jsonObject:
     if rm == 'Y' or 'y':
         print(removing_text + args.remove + from_dir_text + ' $HOME/.AppImage')
         os.remove(os.path.expanduser('~/.AppImage/') + args.remove + ".AppImage")
-        print(removing_text + args.remove + desktop_file + from_dir_text + '$HOME/.local/share/applications/ directory')
+        print(removing_text + desktop_file + from_dir_text + '$HOME/.local/share/applications/')
         os.remove('%s/.local/share/applications/' % HOME + args.remove + '.desktop')
         print('\033[92m' + done_text + '\033[0m')
 
