@@ -14,10 +14,11 @@ continue_input = "Chcete pokračovat?"
 canceled = "Zrušeno."
 to_text = " do "
 done_text = "Hotovo!"
-package = "Balíček "
+package = "AppImage "
 type_apm_help = "' nebo napište apm --help"
 
 # Installation section
+appimage_installed_status = " je již nainstalovaný. Není tedy co dělat."
 installation_appimage_title = "Instalace AppImage"
 name_tab = "Název"
 version_tab = "Verze"
