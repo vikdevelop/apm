@@ -25,4 +25,4 @@ modules:
        - type: git
          url: https://github.com/vikdevelop/apm.git
          tag: '1.4'
-         commit: b86e8da0863c44d11ae58a2ed7469b30da44a716
+         commit: 2f9a1ad0f45ab37761df429b82b8b656524d8145
