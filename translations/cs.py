@@ -16,6 +16,8 @@ to_text = " do "
 done_text = "Hotovo!"
 package = "AppImage "
 type_apm_help = "' nebo napište apm --help"
+arch_tab = "Architektura"
+repo_tab = "Repozitář"
 
 # Installation section
 appimage_installed_status = " je již nainstalovaný. Není tedy co dělat."
@@ -38,8 +40,8 @@ from_dir_text = " z "
 desktop_file = " spustitelného souboru "
 
 # Search section
-search_results = "Výsledky vyhledávání"
-repofile_tab = "Soubor repositáře"
+search_results = "Výsledky vyhledávání (Název a popis): "
+install_it = "Chcete-li tento program nainstalovat, napište: apm -install "
 
 # See all installed AppImages section
 installed_appimages_text = "Toto jsou všechny AppImage nainstalované na vašem počítači:"
