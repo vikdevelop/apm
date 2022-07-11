@@ -45,9 +45,7 @@ if args.install in jsonObject:
             exit()
         if dialog == 'y' or 'Y':
             print(downloading_status + args.install)
-            if not os.path.exists('%s/.cache/apm/tmp' % HOME):
-                os.makedirs('%s/.cache/apm/tmp' % HOME)
-            os.chdir('%s/.cache/apm/tmp' % HOME)
+            os.chdir("%s/.var/app/com.github.vikdevelop.apm/cache/tmp" % HOME)
             os.system("wget -c %s > /dev/null 2>&1" % jsonObject[args.install])
             if not os.path.exists("%s/.AppImage" % HOME):
                 os.mkdir("%s/.AppImage" % HOME)
