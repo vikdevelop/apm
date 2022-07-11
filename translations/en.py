@@ -16,6 +16,8 @@ to_text = " to "
 done_text = "Done!"
 package = "AppImage "
 type_apm_help = "' or type apm --help"
+arch_tab = "Architecture"
+repo_tab = "Repository"
 
 # Installation section
 appimage_installed_status = " is installed. There's nothing to do."
@@ -38,8 +40,8 @@ from_dir_text = " from "
 desktop_file = "desktop file "
 
 # Search section
-search_results = "Search results"
-repofile_tab = "Repository file"
+search_results = "Search results (Name and description): "
+install_it = "If you want install this program, type: apm -install "
 
 # See all installed AppImages section
 installed_appimages_text = "This is all AppImages installed on your computer:"
