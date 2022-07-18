@@ -7,7 +7,7 @@ help_install_appimages = "Nainstalovat AppImage"
 help_uninstall_appimages = "Odinstalovat AppImage"
 help_see_all_appimages = "Zobrazit všechny nainstalované AppImage"
 help_search_appimages = "Hledat AppImage v repositáři"
-help_run_appimages = "Spustit nainstalovaný AppImage"
+help_update_appimage = "Aktualizovat nainstalovaný AppImage"
 
 # General strings
 continue_input = "Chcete pokračovat?"
@@ -19,6 +19,11 @@ type_apm_help = "' nebo napište apm --help"
 arch_tab = "Architektura"
 repo_tab = "Repozitář"
 
+# Updatation section
+up_to_date = " je aktuální!"
+updating_title = "→ Aktualizace AppImage"
+updating = " probíhá aktualizace na nejnovější verzi"
+
 # Installation section
 appimage_installed_status = " je již nainstalovaný. Není tedy co dělat."
 installation_appimage_title = "Instalace AppImage"
@@ -27,21 +32,16 @@ version_tab = "Verze"
 source_tab = "Zdroj"
 downloading_status = "Stahování "
 installing_text = "Instalace "
-creating_moving_text = "Vytváření a přesouvání spustitelného souboru "
 
 # Uninstallation section
 package_is_not_installed = " není nainstalovaný. Zkuste ho nainstalovat pomocí 'apm -install "
-chacking_installation_status = "Kontrola stavu instalace balíčku "
 uninstallation_appimage = "Odinstalace AppImage"
 size_tab = "Velikost"
 path_tab = "Umíštění"
 removing_text = "Odstraňování"
-from_dir_text = " z "
-desktop_file = " spustitelného souboru "
 
 # Search section
 search_results = "Výsledky vyhledávání (Název a popis): "
-install_it = "Chcete-li tento program nainstalovat, napište: apm -install "
 
 # See all installed AppImages section
 installed_appimages_text = "Toto jsou všechny AppImage nainstalované na vašem počítači:"
