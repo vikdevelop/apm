@@ -53,6 +53,10 @@ if args.install in jsonObject:
             print(installing_text + args.install)
             os.system("mv *.AppImage $HOME/.AppImage/" + args.install + ".AppImage")
             os.system("chmod +x $HOME/.AppImage/" + args.install + ".AppImage")
+            if not os.path.exists('%s/.local/share/applications/' % HOME):
+                os.makedirs('%s/.local/share/applications/' % HOME)
+            if not os.path.exists('%s/.local/share/icons/hicolor/128x128/apps/AppImage.svg' % HOME):
+                os.system('mkdir -p ~/.local/share/icons/hicolor/128x128/apps > /dev/null 2>&1 && wget -qO %s/.local/share/icons/hicolor/128x128/apps/AppImage.svg https://raw.githubusercontent.com/vikdevelop/apm/393b99753ccafaa750c201171a310cafdb1c2b7c/appicon/AppImage.svg' % HOME)
             with open('%s/.local/share/applications/' % HOME + args.install + '.desktop', 'w') as desktop:
                 desktop.write("[Desktop Entry]\n")
                 desktop.write("Type=Application\n")
@@ -89,6 +93,7 @@ if args.remove:
             print(removing_text + " " + args.remove)
             os.remove(os.path.expanduser('~/.AppImage/') + args.remove + ".AppImage")
             os.remove('%s/.local/share/applications/' % HOME + args.remove + '.desktop')
+            os.remove('%s/.var/app/com.github.vikdevelop.apm/data/' % HOME + args.remove + '-installed.yaml')
             print('\033[92m' + done_text + '\033[0m')
 
 if args.update in jsonObject:
