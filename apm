@@ -17,7 +17,7 @@ from tabulate import tabulate
 apmcli = argparse.ArgumentParser()
 apmcli.add_argument("-install", help=help_install_appimages, type=str)
 apmcli.add_argument("-remove", help=help_uninstall_appimages, type=str)
-apmcli.add_argument("-seeall", help=help_see_all_appimages, action="store_true")
+apmcli.add_argument("--installed", help=help_see_all_appimages, action="store_true")
 apmcli.add_argument("-search", help=help_search_appimages, type=str)
 apmcli.add_argument("-update", help=help_update_appimage, type=str)
 
@@ -117,6 +117,6 @@ if args.search in jsonObject:
     print('\033[1m' + search_results + args.search + '\033[0m')
     print('\033[95m' + args.search + '\033[0m' + ": Latest AppImage of " + args.search + '\033[96m' + " @appimages.json" + '\033[0m')
 
-if args.seeall:
+if args.installed:
     print(installed_appimages_text)
     os.system("ls $HOME/.AppImage")
