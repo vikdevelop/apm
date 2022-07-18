@@ -6,7 +6,7 @@
     "audacity": "https://github.com/audacity/audacity/releases/download/Audacity-3.1.3/audacity-linux-3.1.3-x86_64.AppImage",
     "bitwarden-connector": "https://github.com/bitwarden/directory-connector/releases/download/v2022.6.0/Bitwarden-Connector-2022.6.0-x86_64.AppImage",
     "etcher": "https://github.com/balena-io/etcher/releases/download/v1.7.9/balenaEtcher-1.7.9-x64.AppImage",
-    "joplin": "https://github.com/laurent22/joplin/releases/download/v2.8.8/Joplin-2.8.8.AppImage",
+    "joplin": "https://github.com/laurent22/joplin/releases/download/v2.9.1/Joplin-2.9.1.AppImage",
     "onlyoffice": "https://github.com/ONLYOFFICE/appimage-desktopeditors/releases/download/v7.1.0/DesktopEditors-x86_64.AppImage",
     "fluent-reader": "https://github.com/yang991178/fluent-reader/releases/download/v1.1.2/Fluent.Reader.1.1.2.AppImage",
     "knowte": "https://github.com/digimezzo/knowte/releases/download/v2.0.9/Knowte-2.0.9.AppImage",
