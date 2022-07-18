@@ -19,7 +19,7 @@ apmcli.add_argument("-install", help=help_install_appimages, type=str)
 apmcli.add_argument("-remove", help=help_uninstall_appimages, type=str)
 apmcli.add_argument("-seeall", help=help_see_all_appimages, action="store_true")
 apmcli.add_argument("-search", help=help_search_appimages, type=str)
-apmcli.add_argument("-run", help=help_run_appimages, type=str)
+apmcli.add_argument("-update", help=help_update_appimage, type=str)
 
 u = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
 jsonObject = json.load(u)
@@ -95,6 +95,25 @@ if args.remove:
         os.remove('%s/.local/share/applications/' % HOME + args.remove + '.desktop')
         print('\033[92m' + done_text + '\033[0m')
 
+if args.update in jsonObject:
+    print('\033[1m' + updating_title + '\033[0m')
+    if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + args.update + "-installed.yaml") == args.update + ": " + jsonObject[args.update]:
+        print('\033[96m' + " @" + args.update + '\033[0m' + up_to_date)
+    else:
+        print('\033[96m' + " @" + args.update + '\033[0m' + updating)
+        os.system("rm ~/.AppImage/" + args.update + ".AppImage")
+        os.system("wget -qO ~/.AppImage/" + args.update + ".AppImage %s" % jsonObject[args.update])
+        with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + args.update + "-installed.yaml", "r") as yread:
+            lines = yread.readlines()
+            ptr = 1
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + args.update + "-installed.yaml", "w") as yaml:
+                for line in lines:
+                    if ptr != 1:
+                        yaml.write(line)
+                    ptr += 1
+                    yaml.write(args.update + ": " + jsonObject[args.update])
+        print('\033[92m' + done_text + '\033[0m')
+        
 if args.search in jsonObject:
     print('\033[1m' + search_results + args.search + '\033[0m')
     print('\033[95m' + args.search + '\033[0m' + ": Latest AppImage of " + args.search + '\033[96m' + " @appimages.json" + '\033[0m')
