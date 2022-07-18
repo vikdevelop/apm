@@ -55,7 +55,7 @@
     "sielo-legacy": "https://github.com/SieloBrowser/sielo-legacy/releases/download/v1.17.14/Sielo1.17.14.AppImage",
     "wexond": "https://github.com/wexond/browser-base/releases/download/v5.2.0/Wexond-5.2.0.AppImage",
     "vivaldi": "https://apprepo.de/uploads/package/version/2022/06/01/034900/Vivaldi.AppImage",
-    "firefox-esr": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-esr-next/firefox-esr-next-102.0.r20220623064521-x86_64.AppImage",
+    "firefox-esr": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-esr-next/firefox-esr-next-102.0.r20220711174428-x86_64.AppImage",
     "firefox-dev": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-devedition/firefox-devedition-103.0.r20220630185738-x86_64.AppImage",
     "firefox-beta": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox-beta/firefox-beta-103.0.r20220630185738-x86_64.AppImage",
     "firefox": "https://github.com/srevinsaju/Firefox-Appimage/releases/download/firefox/firefox-102.0.r20220623063721-x86_64.AppImage",
