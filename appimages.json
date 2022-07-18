@@ -98,5 +98,8 @@
     "wire": "https://github.com/wireapp/wire-desktop/releases/download/linux%2F3.27.2944/Wire-3.27.2944_x86_64.AppImage",
     "qaddapp": "https://github.com/smokejohn/qaddapp/releases/download/0.4-alpha/QAddApp-x86_64.AppImage",
     "apla": "https://github.com/AplaProject/apla-front/releases/download/v2.2.1/apla-front-2.2.1-x86_64.AppImage",
-    "vscode": "https://github.com/zilti/VSCode.AppImage/releases/download/continuous/Visual_Studio_Code-x86_64.AppImage"
+    "vscode": "https://github.com/zilti/VSCode.AppImage/releases/download/continuous/Visual_Studio_Code-x86_64.AppImage",
+    "wick-editor": "https://github.com/Wicklets/wick-editor/releases/download/1.19.0/Linux_Wick.Editor-1.19.0.AppImage",
+    "taskizer": "https://github.com/SimonBrandner/TaskizerDesktop/releases/download/v1.6.0-beta/taskizer-1.6.0-beta-linux-x86_64.AppImage",
+    "mood-fi": "https://github.com/KaykyDeSouzaDias/Mood-Fi/releases/download/Patch-1.0.0/Mood-Fi-1.0.0.AppImage"
 }
