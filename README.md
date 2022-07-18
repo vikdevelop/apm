@@ -1,7 +1,7 @@
 # apm
 Simple installation and uninstallation AppImages on Linux.
 
-With this program, you no longer have to go to a website and manually download AppImage. Just type `apm -install appname (e.g. appimagelauncher)`, and this program will also make it easy to uninstall, run and find new AppImage.
+With this program, you no longer have to go to a website and manually download AppImage. Just type `apm -install appname (e.g. appimagelauncher)`, and this program will also make it easy to uninstall, update and find new AppImage.
 ## Usage
 ```bash
 usage: apm [-h] [-install INSTALL] [-remove REMOVE] [--installed]
