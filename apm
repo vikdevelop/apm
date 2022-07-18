@@ -52,6 +52,11 @@ if args.install in jsonObject:
             print(installing_text + args.install)
             os.system("mv *.AppImage $HOME/.AppImage/" + args.install + ".AppImage")
             os.system("chmod +x $HOME/.AppImage/" + args.install + ".AppImage")
+            if not os.path.exists('%s/.local/share/applications/' % HOME):
+                os.makedirs('%s/.local/share/applications/' % HOME)
+            if not os.path.exists('%s/.local/share/icons/hicolor/128x128/apps/AppImage.svg' % HOME):
+                os.makedirs('%s/.local/share/icons/hicolor/128x128/apps' % HOME)
+                os.system('wget -qO %s/.local/share/icons/hicolor/128x128/apps/AppImage.svg https://raw.githubusercontent.com/vikdevelop/apm/393b99753ccafaa750c201171a310cafdb1c2b7c/appicon/AppImage.svg' % HOME)
             with open('%s/.local/share/applications/' % HOME + args.install + '.desktop', 'w') as desktop:
                 desktop.write("[Desktop Entry]\n")
                 desktop.write("Type=Application\n")
@@ -74,10 +79,10 @@ if args.remove:
     rmdata = [
     ['\033[91m' + args.remove + '\033[0m', "%s MB" % size, "x86_64", "@appimages.json", "$HOME/.AppImage/" + args.remove + ".AppImage"],
     ]
- 
+
     # create header
     head = [name_tab, size_tab, arch_tab, repo_tab, path_tab]
-     
+
     # display table
     print(tabulate(rmdata, headers=head))
     rm = input(continue_input + " [Y/n]: ")
@@ -93,7 +98,7 @@ if args.remove:
 if args.search in jsonObject:
     print('\033[1m' + search_results + args.search + '\033[0m')
     print('\033[95m' + args.search + '\033[0m' + ": Latest AppImage of " + args.search + '\033[96m' + " @appimages.json" + '\033[0m')
-    
+
 if args.run:
     print('\033[1m' + '$ ~/.AppImage/' + args.run + '.AppImage' + '\033[0m')
     os.system("$HOME/.AppImage/" + args.run + ".AppImage")
