@@ -7,7 +7,7 @@ help_install_appimages = "Install AppImages"
 help_uninstall_appimages = "Uninstall AppImages"
 help_see_all_appimages = "See all installed AppImages"
 help_search_appimages = "Search AppImages in repository"
-help_run_appimages = "Run installed AppImages"
+help_update_appimage = "Update installed AppImage"
 
 # General strings
 continue_input = "Would you like to continue?"
@@ -19,29 +19,29 @@ type_apm_help = "' or type apm --help"
 arch_tab = "Architecture"
 repo_tab = "Repository"
 
+# Updatation section
+up_to_date = " is up-to date!"
+updating_title = "→ Updatation of AppImage"
+updating = " updating to the latest version is in progress"
+
 # Installation section
 appimage_installed_status = " is installed. There's nothing to do."
-installation_appimage_title = "Installation AppImage"
+installation_appimage_title = "Installation of AppImage"
 name_tab = "Name"
 version_tab = "Version"
 source_tab = "Source"
 downloading_status = "Downloading "
 installing_text = "Installing "
-creating_moving_text = "Creating and moving desktop file "
 
 # Uninstallation section
 package_is_not_installed = " is not installed. Try install with 'apm -install "
-chacking_installation_status = "Checking installation status of AppImage "
-uninstallation_appimage = "Uninstallation AppImage"
+uninstallation_appimage = "Uninstallation of AppImage"
 size_tab = "Size"
 path_tab = "Path"
-removing_text = "Removing package "
-from_dir_text = " from "
-desktop_file = "desktop file "
+removing_text = "Removing "
 
 # Search section
 search_results = "Search results (Name and description): "
-install_it = "If you want install this program, type: apm -install "
 
 # See all installed AppImages section
 installed_appimages_text = "This is all AppImages installed on your computer:"
