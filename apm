@@ -31,7 +31,6 @@ if args.install in jsonObject:
     if os.path.exists("%s/.AppImage/" % HOME + args.install + ".AppImage"):
         print(package + args.install + appimage_installed_status)
     else:
-        os.system('git --help')
         print('\033[1m' + installation_appimage_title + '\033[0m')
         installdata = [
         ['\033[92m' + args.install + '\033[0m', "@latest", "x86_64", jsonObject[args.install]],
