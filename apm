@@ -115,6 +115,7 @@ if args.update in jsonObject:
                         yaml.write(line)
                     ptr += 1
                     yaml.write(args.update + ": " + jsonObject[args.update])
+        os.system("chmod +x ~/.AppImage/" + args.update + ".AppImage")
         print('\033[92m' + done_text + '\033[0m')
 
 if args.search in jsonObject:
