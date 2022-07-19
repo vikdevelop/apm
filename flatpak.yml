@@ -21,4 +21,4 @@ modules:
     sources:
       - type: archive
         url: https://github.com/vikdevelop/apm/archive/refs/heads/main.zip
-        sha256: e0d7a937afaba2d6eec752f195a5e6c80027a3e1886cac5104747ed4da9d7fc1
+        sha256: 0a61a6e6458ca71fbde8bbd71f7ec3d3a4cfce96d1c479e0af6fc58482159b44
