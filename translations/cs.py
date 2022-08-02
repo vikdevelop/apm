@@ -10,12 +10,15 @@ help_search_appimages = "Hledat AppImage v repositáři"
 help_update_appimage = "Aktualizovat nainstalovaný AppImage"
 
 # General strings
-continue_input = "Chcete pokračovat?"
+continue_input = "Chcete pokračovat? [A/n]: "
 canceled = "Zrušeno."
 done_text = "Hotovo!"
 type_apm_help = "' nebo napište apm --help"
 arch_tab = "Architektura"
 repo_tab = "Repozitář"
+y = "a"
+big_y = "A"
+n = "n"
 
 # Updatation section
 up_to_date = " je aktuální!"
