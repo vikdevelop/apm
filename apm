@@ -122,7 +122,7 @@ if args.update in jsonObject:
 
 if args.search in jsonObject and jsonDesc:
     print('\033[1m' + search_results + args.search + '\033[0m')
-    print('\033[95m' + args.search + '\033[0m' + ": Latest AppImage of " + args.search + '\033[96m' + " @appimages.json" + '\033[0m')
+    print('\033[95m' + args.search + '\033[0m' + ": " + jsonDesc[args.search] + '\033[96m' + " @appimages.json" + '\033[0m')
 
 if args.installed:
     print(installed_appimages_text)
