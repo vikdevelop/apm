@@ -12,16 +12,14 @@ help_update_appimage = "Update installed AppImage"
 # General strings
 continue_input = "Would you like to continue?"
 canceled = "Canceled."
-to_text = " to "
 done_text = "Done!"
-package = "AppImage "
 type_apm_help = "' or type apm --help"
 arch_tab = "Architecture"
 repo_tab = "Repository"
 
 # Updatation section
 up_to_date = " is up-to date!"
-updating_title = "→ Updatation of AppImage"
+updating_title = "Updatation of AppImage"
 updating = " updating to the latest version is in progress"
 
 # Installation section
