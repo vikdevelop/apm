@@ -29,7 +29,7 @@ HOME = os.path.expanduser('~')
 
 if args.install in jsonObject:
     if os.path.exists("%s/.AppImage/" % HOME + args.install + ".AppImage"):
-        print(package + args.install + appimage_installed_status)
+        print("AppImage " + args.install + appimage_installed_status)
     else:
         print('\033[1m' + installation_appimage_title + '\033[0m')
         installdata = [
@@ -39,11 +39,11 @@ if args.install in jsonObject:
         head = [name_tab, version_tab, arch_tab, source_tab]
 
         print(tabulate(installdata, headers=head))
-        dialog = input(continue_input + " [Y/n]: ")
-        if dialog == 'n':
+        dialog = input(continue_input)
+        if dialog == n:
             print(canceled)
             exit()
-        if dialog == 'y' or 'Y':
+        if dialog == y or big_y:
             print(downloading_status + args.install)
             os.chdir("%s/.var/app/com.github.vikdevelop.apm/cache/tmp" % HOME)
             os.system("wget -c %s > /dev/null 2>&1" % jsonObject[args.install])
@@ -70,7 +70,7 @@ if args.install in jsonObject:
             print('\033[92m' + done_text + '\033[0m')
 if args.remove:
     if not os.path.exists("%s/.AppImage/" % HOME + args.remove + ".AppImage"):
-        print(package + args.remove + package_is_not_installed + args.remove + type_apm_help)
+        print("AppImage " + args.remove + package_is_not_installed + args.remove + type_apm_help)
         exit()
     else:
         size = os.path.getsize("%s/.AppImage/" % HOME + args.remove + ".AppImage") >> 20
@@ -84,11 +84,11 @@ if args.remove:
          
         # display table
         print(tabulate(rmdata, headers=head))
-        rm = input(continue_input + " [Y/n]: ")
-        if rm == 'n':
+        rm = input(continue_input)
+        if rm == n:
             print(canceled)
             exit()
-        if rm == 'Y' or 'y':
+        if rm == y or big_y:
             print(removing_text + " " + args.remove)
             os.remove(os.path.expanduser('~/.AppImage/') + args.remove + ".AppImage")
             os.remove('%s/.local/share/applications/' % HOME + args.remove + '.desktop')
@@ -98,7 +98,7 @@ if args.remove:
 if args.update in jsonObject:
     print('\033[1m' + updating_title + '\033[0m')
     if not os.path.exists("%s/.AppImage/" % HOME + args.update + ".AppImage"):
-        print('\033[91m'+ "ERR: " + '\033[0m' + package + args.update + package_is_not_installed + args.update + type_apm_help)
+        print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + args.update + package_is_not_installed + args.update + type_apm_help)
         exit()
     if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + args.update + "-installed.yaml") == args.update + ": " + jsonObject[args.update]:
         print('\033[96m' + " @" + args.update + '\033[0m' + up_to_date)
