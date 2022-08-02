@@ -77,7 +77,7 @@
     "rpmlauncher": "https://github.com/RPMTW/RPMLauncher/releases/download/1.0.7%2B913/RPMLauncher-Linux.AppImage",
     "xclicker": "https://github.com/robiot/xclicker/releases/download/v1.4.0/xclicker_1.4.0_amd64.AppImage",
     "qfield": "https://github.com/opengisch/QField/releases/download/v2.2.0/qfield-v2.2.0-linux-x64.AppImage",
-    "tasker-mightly": "https://github.com/thebigG/Tasker/releases/download/nightly/Tasker-17803ee-x86_64.AppImage",
+    "tasker-nightly": "https://github.com/thebigG/Tasker/releases/download/nightly/Tasker-17803ee-x86_64.AppImage",
     "tasker-stable": "https://github.com/thebigG/Tasker/releases/download/0.1.6/Tasker-0d5ecb1-x86_64.AppImage",
     "gcalias": "https://github.com/dino-/gcalias/releases/download/1.2/gcalias-1.2-x86_64.AppImage",
     "deskscreen": "https://github.com/pavlobu/deskreen/releases/download/v2.0.3/Deskreen-2.0.3.AppImage",
@@ -97,5 +97,8 @@
     "vscode": "https://github.com/zilti/VSCode.AppImage/releases/download/continuous/Visual_Studio_Code-x86_64.AppImage",
     "wick-editor": "https://github.com/Wicklets/wick-editor/releases/download/1.19.0/Linux_Wick.Editor-1.19.0.AppImage",
     "taskizer": "https://github.com/SimonBrandner/TaskizerDesktop/releases/download/v1.6.0-beta/taskizer-1.6.0-beta-linux-x86_64.AppImage",
-    "mood-fi": "https://github.com/KaykyDeSouzaDias/Mood-Fi/releases/download/Patch-1.0.0/Mood-Fi-1.0.0.AppImage"
+    "mood-fi": "https://github.com/KaykyDeSouzaDias/Mood-Fi/releases/download/Patch-1.0.0/Mood-Fi-1.0.0.AppImage",
+    "libreoffice": "https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage",
+    "appimagetool": "https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage",
+    "altitude": "https://github.com/TheLindaProjectInc/Altitude/releases/download/3.2.0/Altitude-Metrix-Wallet-linux-x64.AppImage"
 }
