@@ -10,12 +10,15 @@ help_search_appimages = "Search AppImages in repository"
 help_update_appimage = "Update installed AppImage"
 
 # General strings
-continue_input = "Would you like to continue?"
+continue_input = "Would you like to continue? [Y/n]: "
 canceled = "Canceled."
 done_text = "Done!"
 type_apm_help = "' or type apm --help"
 arch_tab = "Architecture"
 repo_tab = "Repository"
+y = "y"
+big_y = "Y"
+n = "n"
 
 # Updatation section
 up_to_date = " is up-to date!"
