@@ -1,5 +1,5 @@
 {
-	"86box": "Emulator of x86-based machines based on PCem.",
+    "86box": "Emulator of x86-based machines based on PCem.",
 	"code-oss": "Visual Studio Code. Code editing. Redefined.",
 	"enve": "Flexible, user expandable 2D animation software for Linux and Windows.",
 	"appimagepool": "A simple, modern AppImageHub Client, powered by flutter.",
@@ -98,6 +98,6 @@
 	"taskizer": "A task management app [ARCHIVED BY OWNER]",
 	"mood-fi": "best place to relax and listen to a lo-fi live stream",
 	"libreoffice": "Free and open source office suite (successor to OpenOffice)",
-	"appimagetool": "AppImage Tools"
+	"appimagetool": "AppImage Tools",
 	"altitude": "The Metrix wallet"
 }
