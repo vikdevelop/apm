@@ -12,16 +12,14 @@ help_update_appimage = "Aktualizovat nainstalovaný AppImage"
 # General strings
 continue_input = "Chcete pokračovat?"
 canceled = "Zrušeno."
-to_text = " do "
 done_text = "Hotovo!"
-package = "AppImage "
 type_apm_help = "' nebo napište apm --help"
 arch_tab = "Architektura"
 repo_tab = "Repozitář"
 
 # Updatation section
 up_to_date = " je aktuální!"
-updating_title = "→ Aktualizace AppImage"
+updating_title = "Aktualizace AppImage"
 updating = " probíhá aktualizace na nejnovější verzi"
 
 # Installation section
