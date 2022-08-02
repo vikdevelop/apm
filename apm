@@ -21,8 +21,10 @@ apmcli.add_argument("--installed", help=help_see_all_appimages, action="store_tr
 apmcli.add_argument("-search", help=help_search_appimages, type=str)
 apmcli.add_argument("-update", help=help_update_appimage, type=str)
 
-u = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
-jsonObject = json.load(u)
+packages = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
+descriptions = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimage-descriptions.json")
+jsonObject = json.load(packages)
+jsonDesc = json.load(descriptions)
 
 args = apmcli.parse_args()
 HOME = os.path.expanduser('~')
@@ -118,7 +120,7 @@ if args.update in jsonObject:
         os.system("chmod +x ~/.AppImage/" + args.update + ".AppImage")
         print('\033[92m' + done_text + '\033[0m')
 
-if args.search in jsonObject:
+if args.search in jsonObject and jsonDesc:
     print('\033[1m' + search_results + args.search + '\033[0m')
     print('\033[95m' + args.search + '\033[0m' + ": Latest AppImage of " + args.search + '\033[96m' + " @appimages.json" + '\033[0m')
 
