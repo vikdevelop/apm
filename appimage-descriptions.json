@@ -99,5 +99,6 @@
     "mood-fi": "best place to relax and listen to a lo-fi live stream",
     "libreoffice": "Free and open source office suite (successor to OpenOffice)",
     "appimagetool": "AppImage Tools",
-    "altitude": "The Metrix wallet"
+    "altitude": "The Metrix wallet",
+    "gdm-settings": "a settings app for GNOME's Login Manager, GDM"
 }
