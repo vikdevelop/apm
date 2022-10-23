@@ -100,5 +100,6 @@
     "mood-fi": "https://github.com/KaykyDeSouzaDias/Mood-Fi/releases/download/Patch-1.0.0/Mood-Fi-1.0.0.AppImage",
     "libreoffice": "https://libreoffice.soluzioniopen.com/stable/full/LibreOffice-fresh.full-x86_64.AppImage",
     "appimagetool": "https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage",
-    "altitude": "https://github.com/TheLindaProjectInc/Altitude/releases/download/3.2.0/Altitude-Metrix-Wallet-linux-x64.AppImage"
+    "altitude": "https://github.com/TheLindaProjectInc/Altitude/releases/download/3.2.0/Altitude-Metrix-Wallet-linux-x64.AppImage",
+    "gdm-settings": "https://github.com/realmazharhussain/gdm-settings/releases/download/v1.1/Login_Manager_Settings.AppImage"
 }
