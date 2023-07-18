@@ -19,7 +19,8 @@ apmcli.add_argument("-install", help=help_install_appimages, type=str)
 apmcli.add_argument("-remove", help=help_uninstall_appimages, type=str)
 apmcli.add_argument("--installed", help=help_see_all_appimages, action="store_true")
 apmcli.add_argument("-search", help=help_search_appimages, type=str)
-apmcli.add_argument("-update", help=help_update_appimage, type=str)
+apmcli.add_argument("-update", help=help_update_appimage, action="store_true")
+apmcli.add_argument("-update-with-name", help=help_update_appimage, type=str)
 
 packages = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimages.json")
 descriptions = urlopen("https://raw.githubusercontent.com/vikdevelop/apm/main/appimage-descriptions.json")
@@ -97,29 +98,221 @@ if args.remove:
             os.remove('%s/.var/app/com.github.vikdevelop.apm/data/' % HOME + args.remove + '-installed.yaml')
             print('\033[92m' + done_text + '\033[0m')
 
-if args.update in jsonObject:
+if args.update:
     print('\033[1m' + updating_title + '\033[0m')
-    if not os.path.exists("%s/.AppImage/" % HOME + args.update + ".AppImage"):
-        print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + args.update + package_is_not_installed + args.update + type_apm_help)
-        exit()
-    if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + args.update + "-installed.yaml") == args.update + ": " + jsonObject[args.update]:
-        print('\033[96m' + " @" + args.update + '\033[0m' + up_to_date)
+    appimglist = subprocess.getoutput("ls ~/.AppImage")
+    appimglist_r = appimglist.replace(".AppImage", "")
+    appimglist_s = appimglist_r.split()
+    # If is installed one package
+    if len(appimglist_s) > 0:
+        if not os.path.exists("%s/.AppImage/" % HOME + appimglist_s[0] + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + appimglist_s[0] + package_is_not_installed + appimglist_s[0] + type_apm_help)
+            exit()
+        if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + appimglist_s[0] + "-installed.yaml") == appimglist_s[0] + ": " + jsonObject[appimglist_s[0]]:
+            print('\033[96m' + " @" + appimglist_s[0] + '\033[0m' + up_to_date)
+        else:
+            print('\033[96m' + " @" + appimglist_s[0] + '\033[0m' + updating)
+            os.system("rm ~/.AppImage/" + appimglist_s[0] + ".AppImage")
+            os.system("wget -qO ~/.AppImage/" + appimglist_s[0] + ".AppImage %s" % jsonObject[appimglist_s[0]])
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[0] + "-installed.yaml", "r") as yread:
+                lines = yread.readlines()
+                ptr = 1
+                with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[0] + "-installed.yaml", "w") as yaml:
+                    for line in lines:
+                        if ptr != 1:
+                            yaml.write(line)
+                        ptr += 1
+                        yaml.write(appimglist_s[0] + ": " + jsonObject[appimglist_s[0]])
+            os.system("chmod +x ~/.AppImage/" + appimglist_s[0] + ".AppImage")
+            print('\033[92m' + done_text + '\033[0m')
+    
+    # If is installed two packages
+    if len(appimglist_s) > 1:
+        if not os.path.exists("%s/.AppImage/" % HOME + appimglist_s[1] + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + appimglist_s[1] + package_is_not_installed + appimglist_s[1] + type_apm_help)
+            exit()
+        if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + appimglist_s[1] + "-installed.yaml") == appimglist_s[1] + ": " + jsonObject[appimglist_s[1]]:
+            print('\033[96m' + " @" + appimglist_s[1] + '\033[0m' + up_to_date)
+        else:
+            print('\033[96m' + " @" + appimglist_s[1] + '\033[0m' + updating)
+            os.system("rm ~/.AppImage/" + appimglist_s[1] + ".AppImage")
+            os.system("wget -qO ~/.AppImage/" + appimglist_s[1] + ".AppImage %s" % jsonObject[appimglist_s[1]])
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[1] + "-installed.yaml", "r") as yread:
+                lines = yread.readlines()
+                ptr = 1
+                with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[1] + "-installed.yaml", "w") as yaml:
+                    for line in lines:
+                        if ptr != 1:
+                            yaml.write(line)
+                        ptr += 1
+                        yaml.write(appimglist_s[1] + ": " + jsonObject[appimglist_s[1]])
+            os.system("chmod +x ~/.AppImage/" + appimglist_s[1] + ".AppImage")
+            print('\033[92m' + done_text + '\033[0m')
+    
+    # If is installed three packages
+    if len(appimglist_s) > 2:
+        if not os.path.exists("%s/.AppImage/" % HOME + appimglist_s[2] + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + appimglist_s[2] + package_is_not_installed + appimglist_s[2] + type_apm_help)
+            exit()
+        if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + appimglist_s[2] + "-installed.yaml") == appimglist_s[2] + ": " + jsonObject[appimglist_s[2]]:
+            print('\033[96m' + " @" + appimglist_s[2] + '\033[0m' + up_to_date)
+        else:
+            print('\033[96m' + " @" + appimglist_s[2] + '\033[0m' + updating)
+            os.system("rm ~/.AppImage/" + appimglist_s[2] + ".AppImage")
+            os.system("wget -qO ~/.AppImage/" + appimglist_s[2] + ".AppImage %s" % jsonObject[appimglist_s[2]])
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[2] + "-installed.yaml", "r") as yread:
+                lines = yread.readlines()
+                ptr = 1
+                with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[2] + "-installed.yaml", "w") as yaml:
+                    for line in lines:
+                        if ptr != 1:
+                            yaml.write(line)
+                        ptr += 1
+                        yaml.write(appimglist_s[2] + ": " + jsonObject[appimglist_s[2]])
+            os.system("chmod +x ~/.AppImage/" + appimglist_s[2] + ".AppImage")
+            print('\033[92m' + done_text + '\033[0m')
+            
+    # If is installed four packages
+    if len(appimglist_s) > 3:
+        if not os.path.exists("%s/.AppImage/" % HOME + appimglist_s[3] + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + appimglist_s[3] + package_is_not_installed + appimglist_s[3] + type_apm_help)
+            exit()
+        if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + appimglist_s[3] + "-installed.yaml") == appimglist_s[3] + ": " + jsonObject[appimglist_s[3]]:
+            print('\033[96m' + " @" + appimglist_s[3] + '\033[0m' + up_to_date)
+        else:
+            print('\033[96m' + " @" + appimglist_s[3] + '\033[0m' + updating)
+            os.system("rm ~/.AppImage/" + appimglist_s[3] + ".AppImage")
+            os.system("wget -qO ~/.AppImage/" + appimglist_s[3] + ".AppImage %s" % jsonObject[appimglist_s[3]])
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[3] + "-installed.yaml", "r") as yread:
+                lines = yread.readlines()
+                ptr = 1
+                with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[3] + "-installed.yaml", "w") as yaml:
+                    for line in lines:
+                        if ptr != 1:
+                            yaml.write(line)
+                        ptr += 1
+                        yaml.write(appimglist_s[3] + ": " + jsonObject[appimglist_s[3]])
+            os.system("chmod +x ~/.AppImage/" + appimglist_s[3] + ".AppImage")
+            print('\033[92m' + done_text + '\033[0m')
+            
+    # If is installed five packages
+    if len(appimglist_s) > 4:
+        if not os.path.exists("%s/.AppImage/" % HOME + appimglist_s[4] + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + appimglist_s[4] + package_is_not_installed + appimglist_s[4] + type_apm_help)
+            exit()
+        if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + appimglist_s[4] + "-installed.yaml") == appimglist_s[4] + ": " + jsonObject[appimglist_s[4]]:
+            print('\033[96m' + " @" + appimglist_s[4] + '\033[0m' + up_to_date)
+        else:
+            print('\033[96m' + " @" + appimglist_s[4] + '\033[0m' + updating)
+            os.system("rm ~/.AppImage/" + appimglist_s[4] + ".AppImage")
+            os.system("wget -qO ~/.AppImage/" + appimglist_s[4] + ".AppImage %s" % jsonObject[appimglist_s[4]])
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[4] + "-installed.yaml", "r") as yread:
+                lines = yread.readlines()
+                ptr = 1
+                with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[4] + "-installed.yaml", "w") as yaml:
+                    for line in lines:
+                        if ptr != 1:
+                            yaml.write(line)
+                        ptr += 1
+                        yaml.write(appimglist_s[4] + ": " + jsonObject[appimglist_s[4]])
+            os.system("chmod +x ~/.AppImage/" + appimglist_s[4] + ".AppImage")
+            print('\033[92m' + done_text + '\033[0m')
+            
+    # If is installed six packages
+    if len(appimglist_s) > 5:
+        if not os.path.exists("%s/.AppImage/" % HOME + appimglist_s[5] + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + appimglist_s[5] + package_is_not_installed + appimglist_s[5] + type_apm_help)
+            exit()
+        if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + appimglist_s[5] + "-installed.yaml") == appimglist_s[5] + ": " + jsonObject[appimglist_s[5]]:
+            print('\033[96m' + " @" + appimglist_s[5] + '\033[0m' + up_to_date)
+        else:
+            print('\033[96m' + " @" + appimglist_s[5] + '\033[0m' + updating)
+            os.system("rm ~/.AppImage/" + appimglist_s[5] + ".AppImage")
+            os.system("wget -qO ~/.AppImage/" + appimglist_s[5] + ".AppImage %s" % jsonObject[appimglist_s[5]])
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[5] + "-installed.yaml", "r") as yread:
+                lines = yread.readlines()
+                ptr = 1
+                with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[5] + "-installed.yaml", "w") as yaml:
+                    for line in lines:
+                        if ptr != 1:
+                            yaml.write(line)
+                        ptr += 1
+                        yaml.write(appimglist_s[5] + ": " + jsonObject[appimglist_s[5]])
+            os.system("chmod +x ~/.AppImage/" + appimglist_s[5] + ".AppImage")
+            print('\033[92m' + done_text + '\033[0m')
+            
+    # If is installed seven packages
+    if len(appimglist_s) > 6:
+        if not os.path.exists("%s/.AppImage/" % HOME + appimglist_s[6] + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + appimglist_s[6] + package_is_not_installed + appimglist_s[6] + type_apm_help)
+            exit()
+        if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + appimglist_s[6] + "-installed.yaml") == appimglist_s[6] + ": " + jsonObject[appimglist_s[6]]:
+            print('\033[96m' + " @" + appimglist_s[6] + '\033[0m' + up_to_date)
+        else:
+            print('\033[96m' + " @" + appimglist_s[6] + '\033[0m' + updating)
+            os.system("rm ~/.AppImage/" + appimglist_s[6] + ".AppImage")
+            os.system("wget -qO ~/.AppImage/" + appimglist_s[6] + ".AppImage %s" % jsonObject[appimglist_s[6]])
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[6] + "-installed.yaml", "r") as yread:
+                lines = yread.readlines()
+                ptr = 1
+                with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[6] + "-installed.yaml", "w") as yaml:
+                    for line in lines:
+                        if ptr != 1:
+                            yaml.write(line)
+                        ptr += 1
+                        yaml.write(appimglist_s[6] + ": " + jsonObject[appimglist_s[6]])
+            os.system("chmod +x ~/.AppImage/" + appimglist_s[6] + ".AppImage")
+            print('\033[92m' + done_text + '\033[0m')
+            
+    # If is installed eight packages
+    if len(appimglist_s) > 7:
+        if not os.path.exists("%s/.AppImage/" % HOME + appimglist_s[7] + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + appimglist_s[7] + package_is_not_installed + appimglist_s[7] + type_apm_help)
+            exit()
+        if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + appimglist_s[7] + "-installed.yaml") == appimglist_s[7] + ": " + jsonObject[appimglist_s[7]]:
+            print('\033[96m' + " @" + appimglist_s[7] + '\033[0m' + up_to_date)
+        else:
+            print('\033[96m' + " @" + appimglist_s[7] + '\033[0m' + updating)
+            os.system("rm ~/.AppImage/" + appimglist_s[7] + ".AppImage")
+            os.system("wget -qO ~/.AppImage/" + appimglist_s[7] + ".AppImage %s" % jsonObject[appimglist_s[7]])
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[7] + "-installed.yaml", "r") as yread:
+                lines = yread.readlines()
+                ptr = 1
+                with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + appimglist_s[7] + "-installed.yaml", "w") as yaml:
+                    for line in lines:
+                        if ptr != 1:
+                            yaml.write(line)
+                        ptr += 1
+                        yaml.write(appimglist_s[7] + ": " + jsonObject[appimglist_s[7]])
+            os.system("chmod +x ~/.AppImage/" + appimglist_s[7] + ".AppImage")
+            print('\033[92m' + done_text + '\033[0m')
+    
+    # If is installed more than 8 packages
+    if len(appimglist_s) > 8:
+        print(f"Error occured - You have installed {len(appimglist_s)} packages, so you can try update AppImage with name with argument 'apm -update-with-name NAME'")
+        
+if args.update_with_name in jsonObject:
+    if not os.path.exists("%s/.AppImage/" % HOME + args.update_with_name + ".AppImage"):
+            print('\033[91m'+ "ERR: " + '\033[0m' + "AppImage " + args.update_with_name + package_is_not_installed + args.update_with_name + type_apm_help)
+            exit()
+    if subprocess.getoutput("cat ~/.var/app/com.github.vikdevelop.apm/data/" + args.update_with_name + "-installed.yaml") == args.update_with_name + ": " + jsonObject[args.update_with_name]:
+        print('\033[96m' + " @" + args.update_with_name + '\033[0m' + up_to_date)
     else:
-        print('\033[96m' + " @" + args.update + '\033[0m' + updating)
-        os.system("rm ~/.AppImage/" + args.update + ".AppImage")
-        os.system("wget -qO ~/.AppImage/" + args.update + ".AppImage %s" % jsonObject[args.update])
-        with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + args.update + "-installed.yaml", "r") as yread:
+        print('\033[96m' + " @" + args.update_with_name + '\033[0m' + updating)
+        os.system("rm ~/.AppImage/" + args.update_with_name + ".AppImage")
+        os.system("wget -qO ~/.AppImage/" + args.update_with_name + ".AppImage %s" % jsonObject[args.update_with_name])
+        with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + args.update_with_name + "-installed.yaml", "r") as yread:
             lines = yread.readlines()
             ptr = 1
-            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + args.update + "-installed.yaml", "w") as yaml:
+            with open("%s/.var/app/com.github.vikdevelop.apm/data/" % HOME + args.update_with_name + "-installed.yaml", "w") as yaml:
                 for line in lines:
                     if ptr != 1:
                         yaml.write(line)
                     ptr += 1
-                    yaml.write(args.update + ": " + jsonObject[args.update])
-        os.system("chmod +x ~/.AppImage/" + args.update + ".AppImage")
+                    yaml.write(args.update_with_name + ": " + jsonObject[args.update_with_name])
+        os.system("chmod +x ~/.AppImage/" + args.update_with_name + ".AppImage")
         print('\033[92m' + done_text + '\033[0m')
-
+    
 if args.search in jsonObject and jsonDesc:
     print('\033[1m' + search_results + args.search + '\033[0m')
     print('\033[95m' + args.search + '\033[0m' + ": " + jsonDesc[args.search] + '\033[96m' + " @appimages.json" + '\033[0m')
