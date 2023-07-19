@@ -25,7 +25,7 @@ n = "n"
 up_to_date = " is up-to date!"
 updating_title = "Updatation of AppImage"
 updating = " updating to the latest version is in progress"
-update_warning = "AppImage \033[96m{}\033[00m (and other AppImages) cannot be updated. To update it, use the command 'apm -update-with-name PACKAGE-NAME'"
+update_warning = "AppImage \033[96m{}\033[00m (and other AppImages) cannot be updated. To update it, use the command 'apm --update-with-name PACKAGE-NAME'"
 
 # Installation section
 appimage_installed_status = " is installed. There's nothing to do."
