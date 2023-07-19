@@ -8,6 +8,7 @@ help_uninstall_appimages = "Odinstalovat AppImage"
 help_see_all_appimages = "Zobrazit všechny nainstalované AppImage"
 help_search_appimages = "Hledat AppImage v repositáři"
 help_update_appimage = "Aktualizovat nainstalovaný AppImage"
+help_update_appimage_manual = "Aktualizovat AppImage ručně"
 
 # General strings
 continue_input = "Chcete pokračovat? [A/n]: "
@@ -24,12 +25,13 @@ n = "n"
 up_to_date = " je aktuální!"
 updating_title = "Aktualizace AppImage"
 updating = " probíhá aktualizace na nejnovější verzi"
+update_warning = "AppImage \033[96m{}\033[00m (a další AppImage) nemohou být aktualizovány. Pro jejich aktualizaci použijte příkaz 'apm --update-with-name PACKAGE-NAME'"
 
 # Installation section
 appimage_installed_status = " je již nainstalovaný. Není tedy co dělat."
 installation_appimage_title = "Instalace AppImage"
 name_tab = "Název"
-version_tab = "Verze"
+size_tab = "Velikost"
 source_tab = "Zdroj"
 downloading_status = "Stahování "
 installing_text = "Instalace "
