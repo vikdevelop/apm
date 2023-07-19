@@ -5,15 +5,17 @@ With this program, you no longer have to go to a website and manually download A
 ## Usage
 ```bash
 usage: apm [-h] [-install INSTALL] [-remove REMOVE] [--installed]
-           [-search SEARCH] [-update UPDATE]
+           [-search SEARCH] [-update] [--update-with-name UPDATE_WITH_NAME]
 
 optional arguments:
-  -h, --help        show this help message and exit
-  -install INSTALL  Install AppImage
-  -remove REMOVE    Uninstall AppImage
-  --installed       Show all installed AppImages
-  -search SEARCH    Search AppImage in repository
-  -update UPDATE    Update installed AppImage
+  -h, --help            show this help message and exit
+  -install INSTALL      Install AppImages
+  -remove REMOVE        Uninstall AppImages
+  --installed           See all installed AppImages
+  -search SEARCH        Search AppImages in repository
+  -update               Update installed AppImage
+  --update-with-name UPDATE_WITH_NAME
+                        Update AppImage manually
 ```
 ## Add new AppImages
 AppImages is located in `appimages.json` file.
