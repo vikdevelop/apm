@@ -7,4 +7,6 @@ flatpak install --system runtime/org.freedesktop.Platform/x86_64/21.08 runtime/o
 echo "Building apm with flatpak builder"
 flatpak run org.flatpak.Builder build flatpak.yml --install --user --force-clean > /dev/null 2>&1
 python3 aliases.py
+cd
+rm -rf ~/.cache/apm
 echo "Done! Try run APM with command: 'apm --help' or 'flatpak run com.github.vikdevelop.apm --help'"
