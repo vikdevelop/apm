@@ -8,6 +8,7 @@ help_uninstall_appimages = "Uninstall AppImages"
 help_see_all_appimages = "See all installed AppImages"
 help_search_appimages = "Search AppImages in repository"
 help_update_appimage = "Update installed AppImage"
+help_update_appimage_manual = "Update AppImage manually"
 
 # General strings
 continue_input = "Would you like to continue? [Y/n]: "
@@ -24,12 +25,13 @@ n = "n"
 up_to_date = " is up-to date!"
 updating_title = "Updatation of AppImage"
 updating = " updating to the latest version is in progress"
+update_warning = "AppImage \033[96m{}\033[00m (and other AppImages) cannot be updated. To update it, use the command 'apm -update-with-name PACKAGE-NAME'"
 
 # Installation section
 appimage_installed_status = " is installed. There's nothing to do."
 installation_appimage_title = "Installation of AppImage"
 name_tab = "Name"
-version_tab = "Version"
+size_tab = "Size"
 source_tab = "Source"
 downloading_status = "Downloading "
 installing_text = "Installing "
